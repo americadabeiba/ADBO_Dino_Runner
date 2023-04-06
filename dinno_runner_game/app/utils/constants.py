@@ -13,6 +13,8 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 ICON = pygame.image.load(os.path.join(IMG_DIR, "Dino/dinosaur.png"))
 START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
 
+DINO_START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
+
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
@@ -104,6 +106,7 @@ COLOR_ICY_BLUE = (145,216,242)
 COLOR_LAVANDA = (37, 150, 190)
 
 FONT_STYLE = "freesansbold.ttf"
+FONT_STYLE_CONSOLE = os.path.join(IMG_DIR, 'Other/PressStart2P-Regular.ttf')
 
 #Sounds
 JUMP_SOUND = pygame.mixer.Sound("C:\\Users\\asus\\OneDrive\\Documentos\\GitHub\\ADBO_Dino_Runner\\dinno_runner_game\\app\\assets\\Music\\jump.wav")

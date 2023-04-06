@@ -10,7 +10,7 @@ class Dinosaur(pygame.sprite.Sprite):
     JUMP_VELOCITY = 8.5
     DUCKING_VELOCITY = 340
 
-    def __init__(self):
+    def __init__(self,player_name):
         self.type = DEFAULT_TYPE
         self.power_up_time_up = 0
         self.image = RUN_IMG[self.type][0]
@@ -23,6 +23,8 @@ class Dinosaur(pygame.sprite.Sprite):
         self.step = 0
 
         self.jump_sound = JUMP_SOUND
+
+        self.player_name = player_name
 
     def update(self, user_input):
         if self.action == DINO_RUNNING:
