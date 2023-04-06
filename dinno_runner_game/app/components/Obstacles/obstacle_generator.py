@@ -24,7 +24,7 @@ class ObstacleGenerator:
             else:
                 self.cactus.append(Cactus(LARGE_CACTUS_TYPE))
 
-        if len(self.birds) < 1 and random.randint(0, 25) == 1:
+        if len(self.birds) < 1 and random.randint(3, 20) == 1:
             self.birds.append(Bird())
 
         for obstacle in self.cactus:

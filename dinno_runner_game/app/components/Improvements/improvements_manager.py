@@ -12,7 +12,7 @@ class ImprovementManager:
 
     def update(self, game_speed, score, player):
         if not self.improvements and score == self.when_appears:
-            self.when_appears += random.randint(10,300)
+            self.when_appears += random.randint(100,400)
             print(self.when_appears)
             improvement_type = random.choice([Hammer, Shield, Heart]) 
             self.improvements.append(improvement_type())
@@ -30,4 +30,4 @@ class ImprovementManager:
 
     def reset(self):
         self.improvements = []
-        self.when_appears = random.randint(10,300)
+        self.when_appears = random.randint(100,400)

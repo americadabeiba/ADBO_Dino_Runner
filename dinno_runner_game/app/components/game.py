@@ -1,7 +1,7 @@
 import random
 import pygame
 
-from app.utils.constants import BG, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS,ICON,COLOR_LAVANDA,FONT_STYLE_CONSOLE,DINO_START,GAME_SOUND,GAME_OVER,PHRASES, DINO_DEATH,RESET
+from app.utils.constants import BG, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS,ICON,COLOR_LAVANDA,FONT_STYLE_CONSOLE,DINO_START,GAME_SOUND,GAME_OVER,PHRASES, DINO_DEATH,RESET,SHIELD_TYPE,HAMMER_TYPE
 from app.utils.message_util import print_message
 
 from app.components.dinosaur import Dinosaur
@@ -96,12 +96,10 @@ class Game:
     def die(self):
         #is_invincible = self.player.type == SHIELD_TYPE or self.player.type == HAMMER_TYPE 
         #if not is_invincible:
-        pygame.time.delay(500)
-        self.death_count  += 1
-        self.player.lives -=1
-        self.playing=False
-        if self.score.score > self.max_score:
-            self.max_score = self.score.score
+            pygame.time.delay(500)
+            self.death_count  += 1
+            self.player.lives -=1
+            self.playing=False
         
     def show_menu(self):
         self.screen.fill((206,233,218))
@@ -121,11 +119,8 @@ class Game:
             self.screen.blit(RESET, (half_screen_width-50, half_screen_height-150))
             print_message(motivational_phrases[index], self.screen, half_screen_width, half_screen_height, font_color=(149,224,185))
             print_message(f"Deaths: {self.death_count}", self.screen, half_screen_width, half_screen_height + 50)
-            print_message(f"Score: {self.score.score}", self.screen, half_screen_width, half_screen_height + 100)
-            print_message(f"Lives: {self.player.lives}", self.screen, half_screen_width, half_screen_height + 150)
-            #print_message(f"Max score: {self.max_score}", self.screen, half_screen_width, half_screen_height + 200)
+            print_message(f"Lives: {self.player.lives}", self.screen, half_screen_width, half_screen_height + 100)
             
-
         pygame.display.update()
         self.handle_menu_events()
 
@@ -139,7 +134,6 @@ class Game:
                 self.score.reset()
                 if self.player.lives == 0:
                     self.player.lives = 3
-                    #self.player=False
                 self.start_game()
 
     
