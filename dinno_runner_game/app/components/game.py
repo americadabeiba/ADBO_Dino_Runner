@@ -139,6 +139,7 @@ class Game:
                 self.score.reset()
                 if self.player.lives == 0:
                     self.player.lives = 3
+                    #self.player=False
                 self.start_game()
 
     

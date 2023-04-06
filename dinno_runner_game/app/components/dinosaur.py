@@ -1,6 +1,6 @@
 import pygame
 
-from app.utils.constants import DEFAULT_TYPE,DINO_DUCKING,DINO_JUMPING,DINO_RUNNING, DUCK_IMG,JUMP_IMG,RUN_IMG,JUMP_SOUND,HEART_TYPE,SCREEN_WIDTH
+from app.utils.constants import DEFAULT_TYPE,DINO_DUCKING,DINO_JUMPING,DINO_RUNNING, DUCK_IMG,JUMP_IMG,RUN_IMG,JUMP_SOUND,HEART_TYPE,SCREEN_WIDTH, SHIELD_TYPE,HAMMER_TYPE
 from app.utils.message_util import print_message
 
 
@@ -58,7 +58,7 @@ class Dinosaur(pygame.sprite.Sprite):
             
 
     def duck(self):
-        print("Ducking")
+        print("DUCKING")
         self.image = DUCK_IMG[self.type][self.step // 5]
         self.rect = self.image.get_rect()
         self.rect.x = self.POSITION_X
@@ -83,15 +83,19 @@ class Dinosaur(pygame.sprite.Sprite):
         if self.type == HEART_TYPE:
             self.lives += 1
 
-    def check_improvement(self,screen):
+    def check_improvement(self, screen):
         time_to_show = round((self.improvement_duration - pygame.time.get_ticks()) / 1000, 2)
         if time_to_show >= 0:
             half_screen_width = SCREEN_WIDTH // 2
-            if self.type == HEART_TYPE:
+            if self.type == SHIELD_TYPE:
+                print_message(f"{self.type.capitalize()}enabled for {time_to_show} seconds.", screen, half_screen_width, 50, font_size=16)
+            elif self.type == HAMMER_TYPE:
+                print_message(f"{self.type.capitalize()} enabled for {time_to_show} seconds. Hit cacti to earn extra points!", 
+                        screen, half_screen_width, 50, font_size=16)
+            elif self.type == HEART_TYPE:
                 print_message("You win an extra live.", screen, half_screen_width, 50, font_size=16)
             else:
-                print_message("Unknown improving!", screen, half_screen_width, 50, font_size=16)
+                print_message("Unknown power-up!", screen, half_screen_width, 50, font_size=16)
         else:
             self.type = DEFAULT_TYPE
             self.improvement_duration = 0
-    

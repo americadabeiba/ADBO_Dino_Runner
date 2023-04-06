@@ -14,8 +14,8 @@ class Improvement(Sprite):
         self.type = type
         if type == HEART_TYPE:
             self.duration = 3
-        #else:
-        #    self.duration = random.randint(5, 8) #Tiempo activo
+        else:
+            self.duration = random.randint(5, 8) #Tiempo activo
         self.start_time = 0 #Momento de agarre del improvement
 
     def update(self, game_speed, improvements):

@@ -2,7 +2,7 @@ import random
 from app.components.Obstacles.bird import Bird
 from app.components.Obstacles.cactus import Cactus
 from app.utils.message_util import print_message
-from app.utils.constants import BIRD_TYPE, LARGE_CACTUS_TYPE, SMALL_CACTUS_TYPE,DIE_SOUND
+from app.utils.constants import LARGE_CACTUS_TYPE, SMALL_CACTUS_TYPE,DIE_SOUND,HAMMER_TYPE
 
 
 class ObstacleGenerator:
@@ -17,38 +17,44 @@ class ObstacleGenerator:
          self.minus = 0
 
     def update(self, game_speed, player,points, die):
-        game_speed = game_speed * 1.4
+        game_speed = game_speed * 0.5
         if not self.cactus:  #Verifica si la lista de obstáculos está vacía, en cuyo caso se procede a agregar nuevos obstáculos.
             if random.randint(0, 1): #Agregar nuevos cactos
                 self.cactus.append(Cactus(SMALL_CACTUS_TYPE))
             else:
                 self.cactus.append(Cactus(LARGE_CACTUS_TYPE))
 
-        if len(self.birds) < 1 and random.randint(0, 100) == 1:
+        if len(self.birds) < 1 and random.randint(0, 25) == 1:
             self.birds.append(Bird())
 
         for obstacle in self.cactus:
-            obstacle.update(game_speed, self.cactus)
-            if obstacle.collide(player):
-                self.sound.play()
-                self.num_obstacles_hit += 1
-                points.score -= 50
-                #pygame.time.delay(500)
-            if obstacle.rect.right < player.rect.left and not obstacle.passed and not obstacle.has_collided:
-                obstacle.passed = True
-                self.num_obstacles_evaded += 1
-                points.score += 100
+            if player.type == HAMMER_TYPE:
+                obstacle.update(game_speed, self.cactus, player.rect.x)
+            else:
+                obstacle.update(game_speed, self.cactus)
+                if obstacle.collide(player):
+                    self.sound.play()
+                    self.num_obstacles_hit += 1
+                    points.score -= 50
+                    #pygame.time.delay(500)
+                if obstacle.rect.right < player.rect.left and not obstacle.passed and not obstacle.has_collided:
+                    obstacle.passed = True
+                    self.num_obstacles_evaded += 1
+                    points.score += 100
 
         for bird in self.birds:
-            bird.update(game_speed, self.birds)
-            if bird.collide(player):
-                self.sound.play()
-                self.num_birds_hit += 1
-                points.score -= 25
-            elif bird.rect.right < player.rect.left and not bird.passed and not bird.has_collided:
-                bird.passed = True
-                self.num_birds_evaded += 1
-                points.score += 75
+            if player.type == HAMMER_TYPE:
+                bird.update(game_speed, self.birds, player.rect.x)
+            else:
+                bird.update(game_speed, self.birds)
+                if bird.collide(player):
+                    self.sound.play()
+                    self.num_birds_hit += 1
+                    points.score -= 25
+                elif bird.rect.right < player.rect.left and not bird.passed and not bird.has_collided:
+                    bird.passed = True
+                    self.num_birds_evaded += 1
+                    points.score += 75
 
         if(points.score<= -100):
             die()
@@ -67,7 +73,7 @@ class ObstacleGenerator:
                     f"Cactus Strike : {self.num_obstacles_hit}"]
         y_pos = 20
         for message in messages:
-            print_message(message,screen,90,y_pos,font_size=15)
+            print_message(message,screen,90,y_pos,font_size=15,font_color=(0,0,0))
             y_pos += 15
 
     def reset(self):
