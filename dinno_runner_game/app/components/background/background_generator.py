@@ -2,8 +2,8 @@ import random
 import pygame
 
 from app.utils.constants import SCREEN_WIDTH,CLOUDS
-from app.components.background.cloud import Cloud
-from app.components.background.sky import Sky
+from app.components.Background.cloud import Cloud
+from app.components.Background.sky import Sky
 
 SCALE_FACTOR = 0.3
 

@@ -1,6 +1,6 @@
 import random
 from app.components.Obstacles.obstacle import Obstacle
-from app.utils.constants import SMALL_CACTUS,LARGE_CACTUS,LARGE_CACTUS_TYPE,SMALL_CACTUS_TYPE
+from app.utils.constants import SMALL_CACTUS,LARGE_CACTUS, LARGE_CACTUS_TYPE, SMALL_CACTUS_TYPE 
 
 class Cactus(Obstacle):
     CACTUS = {

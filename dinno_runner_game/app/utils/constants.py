@@ -14,6 +14,8 @@ ICON = pygame.image.load(os.path.join(IMG_DIR, "Dino/dinosaur.png"))
 START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
 
 DINO_START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
+GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, "Other/GameOver.png"))
+DINO_DEATH = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDead.png"))
 
 RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
@@ -82,6 +84,8 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
+RESET = pygame.image.load(os.path.join(IMG_DIR, 'Other/Reset.png'))
+
 #Types
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
@@ -93,6 +97,8 @@ DINO_DUCKING = "ducking"
 
 LARGE_CACTUS_TYPE = "LARGE_CACTUS"
 SMALL_CACTUS_TYPE = "SMALL_CACTUS"
+
+BIRD_TYPE= "BIRD"
 
 DUCK_IMG ={ DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD, HAMMER_TYPE: DUCKING_HAMMER, HEART_TYPE: DUCKING}
 JUMP_IMG ={ DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE: JUMPING_HAMMER, HEART_TYPE: JUMPING}
@@ -108,30 +114,34 @@ COLOR_LAVANDA = (37, 150, 190)
 FONT_STYLE = "freesansbold.ttf"
 FONT_STYLE_CONSOLE = os.path.join(IMG_DIR, 'Other/PressStart2P-Regular.ttf')
 
+# Lista de frases motivacionales
+PHRASES = [
+    "You're stronger than you think.",
+    "Believe in yourself.",
+    "Keep pushing forward.",
+    "Never give up.",
+    "You can do it.",
+    "Stay positive.",
+    "Be brave.",
+    "Keep going.",
+    "Stay focused.",
+    "Dream big.",
+    "You're capable of amazing things.",
+    "Embrace challenges.",
+    "You're unstoppable.",
+    "Success is within reach.",
+    "Keep chasing your dreams.",
+    "Believe in your abilities.",
+    "Keep moving forward.",
+    "You're making progress.",
+    "You're on the right track.",
+    "Rise above challenges.",
+    "You're resilient and strong."
+]
+
+
 #Sounds
 JUMP_SOUND = pygame.mixer.Sound("C:\\Users\\asus\\OneDrive\\Documentos\\GitHub\\ADBO_Dino_Runner\\dinno_runner_game\\app\\assets\\Music\\jump.wav")
-
-
-"""""
-Penguin
-ICON_PINGU =    pygame.image.load(os.path.join(IMG_DIR, "Penguin/Penguin_icon.png"))
-
-PINE_TREES = [
-    pygame.image.load(os.path.join(IMG_DIR, "Pine_tree/LargePineTree.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Pine_tree/LargePineTree2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Pine_tree/LargePineTree3.png")),
-]
-
-IGLUS = [
-    pygame.image.load(os.path.join(IMG_DIR, "Iglu/SmallIglu1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Iglu/SmallIglu2.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Iglu/SmallIglu3.png")),
-]
-
-PENGUIN_START = pygame.image.load(os.path.join(IMG_DIR, "Penguin/Penguin_start.gif"))
-penguin_width, penguin_height = PENGUIN_START.get_size()
-PENGUIN_START = pygame.transform.scale(PENGUIN_START, (int(penguin_width * 0.30), int(penguin_height * 0.3)))
-
-FISH = pygame.image.load(os.path.join(IMG_DIR, "Others/Fish.png"))"""""
-
-
+DIE_SOUND = pygame.mixer.Sound("C:\\Users\\asus\\OneDrive\\Documentos\\GitHub\\ADBO_Dino_Runner\\dinno_runner_game\\app\\assets\\Music\\die.wav")
+POINT_SOUND = pygame.mixer.Sound("C:\\Users\\asus\\OneDrive\\Documentos\\GitHub\\ADBO_Dino_Runner\\dinno_runner_game\\app\\assets\\Music\\point.wav")
+GAME_SOUND = pygame.mixer.Sound("C:\\Users\\asus\\OneDrive\\Documentos\\GitHub\\ADBO_Dino_Runner\\dinno_runner_game\\app\\assets\\Music\\Cats_on_Mars.wav")
