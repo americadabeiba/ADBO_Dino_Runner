@@ -1,6 +1,7 @@
 import pygame
 import os
 
+pygame.mixer.init()
 # Global Constants
 TITLE = "Chrome Dino Runner"
 SCREEN_HEIGHT = 600
@@ -9,7 +10,7 @@ FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 # Assets Constants
-ICON = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "Dino/dinosaur.png"))
 START = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoStart.png"))
 
 RUNNING = [
@@ -70,7 +71,7 @@ CLOUDS = [
 
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 
-SKY_COLD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Sky_Cold.jpg'))
+SKY_PINK = pygame.image.load(os.path.join(IMG_DIR, 'Other/Sky_Pink.gif'))
 
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
@@ -81,20 +82,35 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 #Types
 DEFAULT_TYPE = "default"
+SHIELD_TYPE = "shield"
+HEART_TYPE = "life"
+HAMMER_TYPE = "enhance"
 DINO_RUNNING = "running"
 DINO_JUMPING = "jumping"
 DINO_DUCKING = "ducking"
+
 LARGE_CACTUS_TYPE = "LARGE_CACTUS"
 SMALL_CACTUS_TYPE = "SMALL_CACTUS"
+
+DUCK_IMG ={ DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD, HAMMER_TYPE: DUCKING_HAMMER, HEART_TYPE: DUCKING}
+JUMP_IMG ={ DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE: JUMPING_HAMMER, HEART_TYPE: JUMPING}
+RUN_IMG ={ DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD, HAMMER_TYPE: RUNNING_HAMMER, HEART_TYPE: RUNNING}
+
 
 #Colors
 COLOR_NEGRO = (0,0,0)
 COLOR_BLANCO = (255,255,255)
 COLOR_ICY_BLUE = (145,216,242)
+COLOR_LAVANDA = (37, 150, 190)
 
 FONT_STYLE = "freesansbold.ttf"
 
-#Penguin
+#Sounds
+JUMP_SOUND = pygame.mixer.Sound("C:\\Users\\asus\\OneDrive\\Documentos\\GitHub\\ADBO_Dino_Runner\\dinno_runner_game\\app\\assets\\Music\\jump.wav")
+
+
+"""""
+Penguin
 ICON_PINGU =    pygame.image.load(os.path.join(IMG_DIR, "Penguin/Penguin_icon.png"))
 
 PINE_TREES = [
@@ -112,5 +128,7 @@ IGLUS = [
 PENGUIN_START = pygame.image.load(os.path.join(IMG_DIR, "Penguin/Penguin_start.gif"))
 penguin_width, penguin_height = PENGUIN_START.get_size()
 PENGUIN_START = pygame.transform.scale(PENGUIN_START, (int(penguin_width * 0.30), int(penguin_height * 0.3)))
+
+FISH = pygame.image.load(os.path.join(IMG_DIR, "Others/Fish.png"))"""""
 
 

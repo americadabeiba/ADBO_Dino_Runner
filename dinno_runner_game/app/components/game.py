@@ -1,13 +1,15 @@
 import pygame
 
-from app.utils.constants import BG, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS,ICON_PINGU
+from app.utils.constants import BG, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS,ICON
 from app.components.background.background_generator import BackgroundGenerator
+from app.components.dinosaur import Dinosaur
+
 
 class Game:
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
-        pygame.display.set_icon(ICON_PINGU)
+        pygame.display.set_icon(ICON)
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.playing = False
@@ -16,6 +18,7 @@ class Game:
         self.y_pos_bg = 380
 
         self.background_generator = BackgroundGenerator()
+        self.player = Dinosaur()
 
     def run(self):
         # Game loop: events - update - draw
@@ -32,6 +35,8 @@ class Game:
                 self.playing = False
 
     def update(self):
+        user_input = pygame.key.get_pressed()
+        self.player.update(user_input)
         self.background_generator.update()
 
     def draw(self):
@@ -39,6 +44,7 @@ class Game:
         self.screen.fill((255, 255, 255))
         self.background_generator.draw(self.screen)
         self.draw_background()
+        self.player.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
